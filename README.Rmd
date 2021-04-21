@@ -1,0 +1,84 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-"
+)
+```
+
+# rsicons
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+<!-- badges: end -->
+
+The goal of `rsicons` is to make the various icons used within the RStudio IDE available as images that can be embedded in other projects (e.g. RMarkdown documents, Shiny apps, etc.)
+
+## Installation
+
+<!--
+You can install the released version of rsicons from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("rsicons")
+```
+-->
+
+The development version can be installed from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("rundel/rsicons")
+```
+## Example
+
+The core function of the package is `icon()` which lets you insert a named icon in a chunk 
+
+```{r example}
+library(rsicons)
+icon("rstudio", height=64)
+```
+
+, via inline code `r icon("rstudio", height=24)`, or any where else you can embed an image. 
+
+Details about each icon can be obtained via the `icon_info()` function,
+
+```{r info}
+icon_info("rstudio")
+```
+
+
+
+### Available Icons
+
+A listing of currently available icons can be obtained with `available_icons()`, this listing can be refined by providing a `pattern` which uses regular expressions to match the icon names,
+```{r av_icon}
+available_icons(pattern = "vcs")
+```
+
+Similarly, a list of all available types can obtained with,
+```{r av_type}
+available_types()
+```
+
+If instead you would would more directly like to view the available icons, you can use the preview functions:
+
+```{r pr_icon}
+preview_icon("application-x-r-project")
+```
+
+```{r pr_type}
+preview_type("File")
+```
+
+### All Current Icons
+
+```{r pr_all, echo=FALSE}
+preview_all(n_col=3)
+```

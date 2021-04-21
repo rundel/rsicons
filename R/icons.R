@@ -4,6 +4,8 @@
 #' Multiple copies of most icons are available at different sizes, and icons
 #' are categorized by their usage within the IDE (`type`).
 #'
+#' @source [github.com/rstudio/rstudio/](https://github.com/rstudio/rstudio/)
+#'
 #' @format A tibble with 544 rows and 7 columns.
 #' - name: Icon name
 #' - type: Icon category
@@ -12,7 +14,5 @@
 #' - width: Icon's width in pixels
 #' - height: Icon's height in pixels
 #' - filesize: Icon's filesize in bytes
-#'
-#' @source \url{https://github.com/rstudio/rstudio/}
 #'
 "icons"

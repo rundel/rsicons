@@ -17,7 +17,7 @@ A tibble with 544 rows and 7 columns.
 }
 }
 \source{
-\url{https://github.com/rstudio/rstudio/}
+\href{https://github.com/rstudio/rstudio/}{github.com/rstudio/rstudio/}
 }
 \usage{
 icons

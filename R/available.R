@@ -6,7 +6,8 @@ available_icons = function(pattern = NULL, ...) {
     sub = TRUE
 
 
-  tapply(rsicons::icons$name[sub], rsicons::icons$type[sub], c)
+  tapply(rsicons::icons$name[sub], rsicons::icons$type[sub], c) %>%
+    lapply(unique)
 }
 
 #' @export

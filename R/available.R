@@ -1,7 +1,20 @@
 #' @export
+available_icons = function(pattern = NULL, ...) {
+  if (!is.null(pattern))
+    sub = grepl(pattern, rsicons::icons$name, ...)
+  else
+    sub = TRUE
 
-available_icons = function() {
 
+  tapply(rsicons::icons$name[sub], rsicons::icons$type[sub], c)
 }
 
-fs::dir_ls(system.file("icons/icons/", package="rsicons"))
+#' @export
+available_types = function(pattern = NULL, ...) {
+  if (!is.null(pattern))
+    sub = grepl(pattern, rsicons::icons$type, ...)
+  else
+    sub = TRUE
+
+  unique(rsicons::icons$type[sub])
+}

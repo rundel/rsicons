@@ -20,4 +20,6 @@ Depends:
 Imports: 
     magrittr,
     magick,
-    tibble
+    tibble,
+    htmltools,
+    base64enc

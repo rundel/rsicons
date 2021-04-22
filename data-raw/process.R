@@ -127,5 +127,17 @@ icons = bind_rows(
 icons$name[icons$name == "help" & icons$type == "Common - Code"] = "help_code"
 
 
+
+# Check for dupes
+icons %>%
+  select(name, type) %>%
+  distinct() %>%
+  pull(name) %>%
+  duplicated() %>%
+  {!any(.)} %>%
+  stopifnot()
+
+
+# Save data
 usethis::use_data(icons, overwrite=TRUE)
 

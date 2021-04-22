@@ -71,35 +71,33 @@ A listing of currently available icons can be obtained with
 ``` r
 available_icons(pattern = "vcs")
 #> $Other
-#> [1] "vcsUnstage" "vcsUnstage"
+#> [1] "vcsUnstage"
 #> 
 #> $Source
-#> [1] "vcsFileDiff" "vcsFileDiff"
+#> [1] "vcsFileDiff"
 #> 
 #> $VCS
-#>  [1] "vcsAddFiles"     "vcsAddFiles"     "vcsCommit"       "vcsCommit"      
-#>  [5] "vcsDiff"         "vcsDiff"         "vcsIgnore"       "vcsIgnore"      
-#>  [9] "vcsPull"         "vcsPull"         "vcsPullRebase"   "vcsPullRebase"  
-#> [13] "vcsPush"         "vcsPush"         "vcsRefresh"      "vcsRefresh"     
-#> [17] "vcsRemoveFiles"  "vcsRemoveFiles"  "vcsResolve"      "vcsResolve"     
-#> [21] "vcsRevert"       "vcsRevert"       "vcsShowHistory"  "vcsShowHistory" 
-#> [25] "vcsViewOnGitHub" "vcsViewOnGitHub"
+#>  [1] "vcsAddFiles"     "vcsCommit"       "vcsDiff"         "vcsIgnore"      
+#>  [5] "vcsPull"         "vcsPullRebase"   "vcsPush"         "vcsRefresh"     
+#>  [9] "vcsRemoveFiles"  "vcsResolve"      "vcsRevert"       "vcsShowHistory" 
+#> [13] "vcsViewOnGitHub"
 ```
 
 Similarly, a list of all available types can obtained with,
 
 ``` r
 available_types()
-#>  [1] "Application"            "Build"                  "Connections"           
-#>  [4] "Console"                "Debugging"              "Environment"           
-#>  [7] "File"                   "Files"                  "Help"                  
-#> [10] "History"                "HTML preview"           "Jobs"                  
-#> [13] "Other"                  "Packages"               "packrat"               
-#> [16] "PDF"                    "Plots"                  "Plumber IDE features"  
-#> [19] "Presentation"           "Profiler"               "Projects"              
-#> [22] "RSConnect connectivity" "Shiny IDE features"     "Source"                
-#> [25] "Terminal"               "Tutorial"               "VCS"                   
-#> [28] "Version control"        "Viewer"                 "Workspace"
+#>  [1] "Application"            "Build"                  "Common"                
+#>  [4] "Common - Code"          "Connections"            "Console"               
+#>  [7] "Debugging"              "Environment"            "File"                  
+#> [10] "Files"                  "Help"                   "History"               
+#> [13] "HTML preview"           "Jobs"                   "Other"                 
+#> [16] "Packages"               "packrat"                "PDF"                   
+#> [19] "Plots"                  "Plumber IDE features"   "Presentation"          
+#> [22] "Profiler"               "Projects"               "RSConnect connectivity"
+#> [25] "Shiny IDE features"     "Source"                 "Terminal"              
+#> [28] "Tutorial"               "VCS"                    "Version control"       
+#> [31] "Viewer"                 "Workspace"
 ```
 
 If instead you would would more directly like to view the available
@@ -119,4 +117,4 @@ preview_type("File")
 
 ### All Current Icons
 
-<img src="man/figures/README-pr_all-1.png" width="1336" />
+<img src="man/figures/README-pr_all-1.png" width="1344" />

@@ -75,10 +75,43 @@ parse_categories = function(file) {
   res
 }
 
+process_icon_folder = function(path) {
+  files = fs::dir_ls(path, recurse = TRUE, type = "file", glob = "*.png")
+
+  prefix = fs::path_file(path)
+  cat = purrr::map_chr(
+    fs::path_split(files),
+    ~ .x[-length(.x)] %>%
+      { .[seq_along(.) >= which(. == prefix)]} %>%
+      paste(collapse= " - ") %>%
+      stringr::str_to_title()
+  )
+
+
+  tibble::tibble(
+    path = files,
+    type = cat,
+  ) %>%
+    mutate(
+      name = fs::path_file(path) %>% fs::path_ext_remove(),
+      data = purrr::map(path, read_bin),
+      info = purrr::map(
+        data,
+        ~ magick::image_read(.x) %>% magick::image_info()
+      )
+    ) %>%
+    unnest_wider(info) %>%
+    relocate(name, type) %>%
+    select(-colorspace, -matte, -density, -path)
+
+}
+
+
 
 icons = bind_rows(
   process_file_icons(),
-  process_command_icons()
+  process_command_icons(),
+  process_icon_folder(here::here("data-raw/common"))
 ) %>%
   arrange(type, name, width, height)
 

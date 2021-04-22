@@ -39,10 +39,16 @@ named icon in a chunk.
 
 ``` r
 library(rsicons)
+icon("rstudio", height = 24)
+```
+
+<img src="man/figures/README-example-1.png" width="24" />
+
+``` r
 icon("rstudio", height = 64)
 ```
 
-<img src="man/figures/README-example-1.png" width="64" />
+<img src="man/figures/README-example-2.png" width="64" />
 
 You can also use `icon()` via inline code
 <img src="man/figures/README-example-1.png" width="24" />, or anywhere

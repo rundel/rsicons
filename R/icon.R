@@ -57,13 +57,13 @@ icon = function(name, height = NULL, width = NULL, resize = FALSE, output = c("i
 
   best_size = which.min( dist )
 
-  if (!resize) {
-    height = NULL
-    width = NULL
-  }
-
   if (output == "tag") {
     img_type = df$format[best_size] %>% tolower()
+
+    if (!resize) {
+      height = NULL
+      width = NULL
+    }
 
     htmltools::img(
       src = paste0(src='data:image/', img_type, ';base64,',
@@ -77,7 +77,8 @@ icon = function(name, height = NULL, width = NULL, resize = FALSE, output = c("i
     img = magick::image_read(
       df$data[[best_size]]
     )
-    if (!is.null(height) | !is.null(width))
+
+    if (resize)
       img = magick::image_resize(img, geometry = paste0(height, "x", width))
 
     img

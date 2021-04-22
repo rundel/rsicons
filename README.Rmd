@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/rundel/rsicons/workflows/R-CMD-check/badge.svg)](https://github.com/rundel/rsicons/actions)
 <!-- badges: end -->
 
 The goal of `rsicons` is to make the various icons used within the RStudio IDE available as images that can be embedded in other projects (e.g. RMarkdown documents, Shiny apps, etc.)
@@ -45,7 +46,7 @@ library(rsicons)
 icon("rstudio", height=64)
 ```
 
-, via inline code `r icon("rstudio", height=24)`, or any where else you can embed an image. 
+, via inline code `r icon("rstudio", height = 24)`, or any where else you can embed an image. 
 
 Details about each icon can be obtained via the `icon_info()` function,
 
@@ -80,5 +81,5 @@ preview_type("File")
 ### All Current Icons
 
 ```{r pr_all, echo=FALSE}
-preview_all(n_col=3)
+preview_all(n_col = 3)
 ```

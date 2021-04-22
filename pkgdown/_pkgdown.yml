@@ -1,0 +1,10 @@
+url: https://rundel.github.io/rsicons
+
+template:
+  bootstrap: 4
+
+authors:
+  Colin Rundel:
+    href: "http://stat.duke.edu/~cr173"
+  Mine Çetinkaya-Rundel:
+    href: "http://mine-cr.com/"

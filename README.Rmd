@@ -40,14 +40,14 @@ devtools::install_github("rundel/rsicons")
 
 ## Example
 
-The core function of the package is `icon()` which lets you insert a named icon in a chunk 
+The core function of the package is `icon()` which lets you insert a named icon in a chunk.
 
 ```{r example}
 library(rsicons)
 icon("rstudio", height = 64)
 ```
 
-, via inline code `r icon("rstudio", height = 24)`, or any where else you can embed an image. 
+You can also use `icon()` via inline code `r icon("rstudio", height = 24)`, or anywhere else you can embed an image. 
 
 Details about each icon can be obtained via the `icon_info()` function,
 
@@ -55,32 +55,11 @@ Details about each icon can be obtained via the `icon_info()` function,
 icon_info("rstudio")
 ```
 
+See the [Get Started](articles/get-started.html) vignette for more information.
 
-
-### Available Icons
-
-A listing of currently available icons can be obtained with `available_icons()`, this listing can be refined by providing a `pattern` which uses regular expressions to match the icon names,
-```{r av_icon}
-available_icons(pattern = "vcs")
-```
-
-Similarly, a list of all available types can obtained with,
-```{r av_type}
-available_types()
-```
-
-If instead you would would more directly like to view the available icons, you can use the preview functions:
-
-```{r pr_icon}
-preview_icon("application-x-r-project")
-```
-
-```{r pr_type}
-preview_type("File")
-```
-
-### All Current Icons
-
-```{r pr_all, echo=FALSE}
+<details>
+<summary>See all available icons</summary>
+```{r pr_all, echo = FALSE}
 preview_all(n_col = 3)
 ```
+</details>

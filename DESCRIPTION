@@ -3,8 +3,10 @@ Title: Icons of the RStudio IDE
 Version: 0.0.0.9000
 Authors@R: c(
     person("Colin", "Rundel", email = "rundel@gmail.com", role = c("aut", "cre")),
-    person("Mine", "\u00C7etinkaya-Rundel", email = "cetinkaya.mine@gmail.com", role = c("aut"), comment = c(ORCID = "0000-0001-6452-2420"))
+    person("Mine", "\u00C7etinkaya-Rundel", email = "cetinkaya.mine@gmail.com", role = c("aut"), comment = c(ORCID = "0000-0001-6452-2420")),
+    person("RStudio", role = c("cph"), comment = "All included icons")
     )
+Copyright: RStudio
 Description: Functions for embedding icons of the RStudio IDE in R Markdown documents and Shiny applications. 
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -22,3 +24,7 @@ Imports:
     base64enc
 BugReports: https://rundel.github.io/rsicons/issues
 URL: https://rundel.github.io/rsicons/
+Suggests: 
+    rmarkdown,
+    knitr
+VignetteBuilder: knitr

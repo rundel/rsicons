@@ -70,5 +70,5 @@ information.
 <summary>
 See all available icons
 </summary>
-<img src="man/figures/README-pr_all-1.png" width="1344" />
+<img src="man/figures/README-pr_all-1.png" width="1396" />
 </details>

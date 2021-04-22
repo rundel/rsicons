@@ -93,12 +93,13 @@ preview_type = function(type, max_size = 128, display = TRUE) {
 
   img = magick::image_blank(width=w, height = 60, color = "none") %>%
     magick::image_annotate(
-      paste0('"', type, '" icons'), gravity = "center",
+      paste0('"', type, '" icons'), gravity = "west",
       font = "mono", size = 26, weight = 700
     ) %>%
     magick::image_background(color = "none") %>%
     c(icons) %>%
-    magick::image_append(stack = TRUE)
+    magick::image_append(stack = TRUE) %>%
+    magick::image_border(color = "none", geometry = "10x")
 
   if (display)
     print(img, info = FALSE)

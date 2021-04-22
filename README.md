@@ -117,4 +117,4 @@ preview_type("File")
 
 ### All Current Icons
 
-<img src="man/figures/README-pr_all-1.png" width="1344" />
+<img src="man/figures/README-pr_all-1.png" width="1336" />

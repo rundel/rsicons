@@ -8,6 +8,13 @@ read_bin = function(f) {
   z
 }
 
+get_name = function(path) {
+  fs::path_file(path) %>%
+    fs::path_ext_remove() %>%
+    stringr::str_remove("_2x$")
+}
+
+
 process_file_icons = function() {
   files = fs::dir_ls(here::here("data-raw/icons/"), recurse = TRUE, type = "file")
 
@@ -15,7 +22,7 @@ process_file_icons = function() {
     path = files
   ) %>%
     mutate(
-      name = fs::path_file(path) %>% fs::path_ext_remove(),
+      name = get_name(path),
       type = "File",
       data = purrr::map(path, read_bin),
       info = purrr::map(
@@ -39,7 +46,7 @@ process_command_icons = function() {
     path = fs::dir_ls(dir, type = "file", glob = "*.png")
   ) %>%
     mutate(
-      name = fs::path_file(path) %>% fs::path_ext_remove() %>% stringr::str_remove("_2x$"),
+      name = get_name(path),
       type = cats[name],
       type = ifelse(is.na(type), "Other", type),
       data = purrr::map(path, read_bin),
@@ -93,7 +100,7 @@ process_icon_folder = function(path) {
     type = cat,
   ) %>%
     mutate(
-      name = fs::path_file(path) %>% fs::path_ext_remove(),
+      name = get_name(path),
       data = purrr::map(path, read_bin),
       info = purrr::map(
         data,

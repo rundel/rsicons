@@ -1,0 +1,86 @@
+---
+title: "Get started with **rsicons**"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{get-started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The **rsicons** package allows you to insert icons from the RStudio IDE into your R Markdown documents and Shiny applications easily with one function: `icon()`. 
+This might be particularly useful for documents designed for teaching and/or documentation as it allows you to avoid the pesky "take a screenshot and insert into your document" step.
+You can insert the logos as stand-alone images or inline.
+
+```{r setup}
+library(rsicons)
+```
+
+## Inserting icons
+
+For example, if you insert the following in an R Markdown document:
+
+```{r eval = FALSE}
+Click on `r icon("mermaid", height = 16)` to create a new branch.
+```
+
+You'll get the following output when you knit your document:
+
+---
+
+Click on `r icon("mermaid", height = 16)` to create a new branch.
+
+---
+
+You can also insert images on their own. 
+By default, rsicons will use the closest size available for the `height` you specify. 
+For example, in the output below, we specify `height = 100` but the image that's displayed is 128x128.
+
+```{r}
+icon("rstudio", height = 100)
+```
+
+To get the precise height you want, use `resize = TRUE`.
+
+```{r}
+icon("rstudio", height = 100, resize = TRUE)
+```
+
+## Icon information
+
+You can get information on any of the icons with `icon_info()`. 
+This is especially helpful for figuring out available sizes.
+
+```{r}
+icon_info("rstudio")
+```
+
+## Available icons
+
+A listing of currently available icons can be obtained with `available_icons()`, this listing can be refined by providing a `pattern` which uses regular expressions to match the icon names with the `pattern` argument.
+
+```{r av_icon}
+available_icons(pattern = "vcs")
+```
+
+Similarly, a list of all available types can obtained with `available_types()`.
+
+```{r av_type}
+available_types()
+```
+
+If instead you would would more directly like to view the available icons, you can use the preview functions:
+
+```{r pr_icon}
+preview_icon("application-x-r-project")
+```
+
+```{r pr_type}
+preview_type("File")
+```

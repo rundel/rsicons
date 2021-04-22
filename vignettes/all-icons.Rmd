@@ -1,0 +1,22 @@
+---
+title: "All icons"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{All icons}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+You can use `preview_all()` to view all current icons.
+
+```{r pr_all}
+library(rsicons)
+preview_all(n_col = 3)
+```

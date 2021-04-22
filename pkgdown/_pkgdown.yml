@@ -1,0 +1,41 @@
+url: https://rundel.github.io/rsicons
+
+template:
+  bootstrap: 4
+
+authors:
+  Colin Rundel:
+    href: "http://stat.duke.edu/~cr173"
+  Mine Çetinkaya-Rundel:
+    href: "http://mine-cr.com/"
+
+navbar:
+  left:
+  - text: Get started
+    href: articles/get-started.html
+  - text: Reference
+    href: reference/index.html
+  - text: Articles
+    menu:
+    - text: All icons
+      href: articles/all-icons.html
+  - text: News
+    href: news/index.html
+
+reference:
+- title: Icon functions
+  contents:
+  - icon
+  - icon_info
+- title: Preview functions
+  contents:
+  - preview_icon
+  - preview_type
+  - preview_all
+- title: Available functions
+  contents:
+  - available_icons
+  - available_types
+- title: Datasets
+  contents:
+  - icons

@@ -84,6 +84,19 @@ icon = function(name, height = NULL, width = NULL, resize = FALSE, output = c("i
   }
 }
 
+#' @title Icon details
+#'
+#' @description Retrieves basic useful information about the requested icon, including its type,
+#' available sizes, and image formats.
+#'
+#' @param name Icon name.
+#'
+#' @return A named list.
+#'
+#' @examples
+#'
+#' icon_info("rstudio")
+#'
 #' @export
 icon_info = function(name) {
   stopifnot(length(name) == 1)

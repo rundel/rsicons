@@ -6,6 +6,31 @@ map_img = function(x, fun, ...) {
 }
 
 
+#' @rdname preview
+#' @name preview
+#'
+#' @title Preview icons
+#'
+#' @description Helper functions for previewing specific icons, icon types, or all available icons.
+#'
+#' @param name Icon name to preview.
+#' @param type Icon type to preview.
+#' @param max_size Maximum size of icon to include in preview, checks height and width.
+#' @param n_col Number of columns to use when displaying all icons.
+#' @param display Should the preview be displayed, via `print()` method of "magick-image".
+#' @param inc_label Should the icons name be include in the preview.
+#'
+#' @return Returns a "magick-image" object.
+#'
+#' @examples
+#'
+#' preview_icon("rstudio")
+#'
+#' preview_type("File")
+#'
+NULL
+
+#' @rdname preview
 #' @export
 preview_icon = function(name, max_size = 256, display = TRUE, inc_label = FALSE) {
   stopifnot(length(name) == 1)
@@ -44,7 +69,7 @@ preview_icon = function(name, max_size = 256, display = TRUE, inc_label = FALSE)
     img
 }
 
-
+#' @rdname preview
 #' @export
 preview_type = function(type, max_size = 128, display = TRUE) {
   stopifnot(length(type) == 1)
@@ -81,13 +106,12 @@ preview_type = function(type, max_size = 128, display = TRUE) {
     img
 }
 
-
+#' @rdname preview
 #' @export
 preview_all = function(n_col = 4, max_size = 128, display = TRUE) {
   types = unique(rsicons::icons$type)
 
-  img = lapply(types, preview_type, max_size = max_size, display = FALSE) %>%
-    do.call(c, .)
+  img = map_img(types, preview_type, max_size = max_size, display = FALSE)
 
   info = magick::image_info(img)
   tot_height = sum(info$height)

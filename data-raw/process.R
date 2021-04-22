@@ -42,6 +42,16 @@ process_command_icons = function() {
   dir = here::here("data-raw/commands/")
   cats = parse_categories(file.path(dir, "Commands.java"))
 
+
+  # Hard coded category fixes
+  n = names(cats)
+
+  cats = cats %>%
+    str_remove(" connectivity$| IDE features$") %>%
+    str_replace("^VCS$", "Version control") %>%
+    set_names(n)
+
+
   tibble::tibble(
     path = fs::dir_ls(dir, type = "file", glob = "*.png")
   ) %>%
@@ -82,22 +92,24 @@ parse_categories = function(file) {
   res
 }
 
-process_icon_folder = function(path) {
-  files = fs::dir_ls(path, recurse = TRUE, type = "file", glob = "*.png")
+process_icon_folder = function(path, type) {
+  files = fs::dir_ls(path, type = "file", glob = "*.png")
 
-  prefix = fs::path_file(path)
-  cat = purrr::map_chr(
-    fs::path_split(files),
-    ~ .x[-length(.x)] %>%
-      { .[seq_along(.) >= which(. == prefix)]} %>%
-      paste(collapse= " - ") %>%
-      stringr::str_to_title()
-  )
+  #files = fs::dir_ls(path, recurse = TRUE, type = "file", glob = "*.png")
+  # prefix = fs::path_file(path)
+  # cat = purrr::map_chr(
+  #   fs::path_split(files),
+  #   ~ .x[-length(.x)] %>%
+  #     { .[seq_along(.) >= which(. == prefix)]} %>%
+  #     paste(collapse= " - ") %>%
+  #     stringr::str_to_title()
+  # )
 
 
   tibble::tibble(
     path = files,
-    type = cat,
+    #type = cat,
+    type = type,
   ) %>%
     mutate(
       name = get_name(path),
@@ -118,24 +130,26 @@ process_icon_folder = function(path) {
 icons = bind_rows(
   process_file_icons(),
   process_command_icons(),
-  process_icon_folder(here::here("data-raw/common"))
+  process_icon_folder(here::here("data-raw/common"), type = "Common"),
+  process_icon_folder(here::here("data-raw/common/code"), type = "Code")
 ) %>%
   arrange(type, name, width, height)
 
 
 # Fix duplicate name
-icons$name[icons$name == "help" & icons$type == "Common - Code"] = "help_code"
+icons$name[icons$name == "help" & icons$type == "Code"] = "help_code"
 
 
 
 # Check for dupes
-icons %>%
+test = icons %>%
   select(name, type) %>%
   distinct() %>%
-  pull(name) %>%
-  duplicated() %>%
-  {!any(.)} %>%
-  stopifnot()
+  filter(
+    duplicated(name)
+  )
+
+stopifnot(nrow(test) == 0)
 
 
 # Save data

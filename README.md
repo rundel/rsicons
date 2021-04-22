@@ -39,7 +39,7 @@ named icon in a chunk
 
 ``` r
 library(rsicons)
-icon("rstudio", height=64)
+icon("rstudio", height = 64)
 ```
 
 <img src="man/figures/README-example-1.png" width="64" />

@@ -37,13 +37,14 @@ The development version can be installed from [GitHub](https://github.com/) with
 # install.packages("devtools")
 devtools::install_github("rundel/rsicons")
 ```
+
 ## Example
 
 The core function of the package is `icon()` which lets you insert a named icon in a chunk 
 
 ```{r example}
 library(rsicons)
-icon("rstudio", height=64)
+icon("rstudio", height = 64)
 ```
 
 , via inline code `r icon("rstudio", height = 24)`, or any where else you can embed an image. 

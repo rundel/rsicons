@@ -1,3 +1,28 @@
+#' @title Create an icon
+#'
+#' @description Creates an icon using based on the provided `name`. The icon will be returned
+#' either as a "magick-image" object (if `output = "img"`) or as a text string containing an
+#' html img tag (if `output = "tag"`).
+#'
+#' The height and the width can be specified, the function will try to match the icon with the
+#' closest possible size and can resize if necessary.
+#'
+#' @param name Icon name.
+#' @param height Icon height in pixels.
+#' @param width Icon width in pixels.
+#' @param resize Should the icon be resized to the provided height and/or width.
+#' @param output Return either a "magick-image" object or img tag text string.
+#'
+#' @return The return type is determined by the value of `output` selected.
+#'
+#' @examples
+#'
+#' icon("rstudio", 64)
+#' icon("rstudio", 72)
+#' icon("rstudio", 72, resize = TRUE)
+#'
+#' icon("rstudio", 64, output = "tag")
+#'
 #' @export
 icon = function(name, height = NULL, width = NULL, resize = FALSE, output = c("img", "tag")) {
   stopifnot(length(height) <= 1)

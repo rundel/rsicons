@@ -1,8 +1,8 @@
 # Apply across and concatenate the result
 # Useful for creating image vectors
 map_img = function(x, fun, ...) {
-  lapply(x, fun, ...) %>%
-    do.call(c, .)
+  m = lapply(x, fun, ...)
+  do.call(c, m)
 }
 
 

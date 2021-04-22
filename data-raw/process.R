@@ -8,6 +8,13 @@ read_bin = function(f) {
   z
 }
 
+get_name = function(path) {
+  fs::path_file(path) %>%
+    fs::path_ext_remove() %>%
+    stringr::str_remove("_2x$")
+}
+
+
 process_file_icons = function() {
   files = fs::dir_ls(here::here("data-raw/icons/"), recurse = TRUE, type = "file")
 
@@ -15,7 +22,7 @@ process_file_icons = function() {
     path = files
   ) %>%
     mutate(
-      name = fs::path_file(path) %>% fs::path_ext_remove(),
+      name = get_name(path),
       type = "File",
       data = purrr::map(path, read_bin),
       info = purrr::map(
@@ -39,7 +46,7 @@ process_command_icons = function() {
     path = fs::dir_ls(dir, type = "file", glob = "*.png")
   ) %>%
     mutate(
-      name = fs::path_file(path) %>% fs::path_ext_remove() %>% stringr::str_remove("_2x$"),
+      name = get_name(path),
       type = cats[name],
       type = ifelse(is.na(type), "Other", type),
       data = purrr::map(path, read_bin),
@@ -75,10 +82,43 @@ parse_categories = function(file) {
   res
 }
 
+process_icon_folder = function(path) {
+  files = fs::dir_ls(path, recurse = TRUE, type = "file", glob = "*.png")
+
+  prefix = fs::path_file(path)
+  cat = purrr::map_chr(
+    fs::path_split(files),
+    ~ .x[-length(.x)] %>%
+      { .[seq_along(.) >= which(. == prefix)]} %>%
+      paste(collapse= " - ") %>%
+      stringr::str_to_title()
+  )
+
+
+  tibble::tibble(
+    path = files,
+    type = cat,
+  ) %>%
+    mutate(
+      name = get_name(path),
+      data = purrr::map(path, read_bin),
+      info = purrr::map(
+        data,
+        ~ magick::image_read(.x) %>% magick::image_info()
+      )
+    ) %>%
+    unnest_wider(info) %>%
+    relocate(name, type) %>%
+    select(-colorspace, -matte, -density, -path)
+
+}
+
+
 
 icons = bind_rows(
   process_file_icons(),
-  process_command_icons()
+  process_command_icons(),
+  process_icon_folder(here::here("data-raw/common"))
 ) %>%
   arrange(type, name, width, height)
 

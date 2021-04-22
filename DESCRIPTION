@@ -17,6 +17,8 @@ Depends:
 Imports: 
     magrittr,
     magick,
-    tibble
+    tibble,
+    htmltools,
+    base64enc
 BugReports: https://rundel.github.io/rsicons/issues
 URL: https://rundel.github.io/rsicons/
